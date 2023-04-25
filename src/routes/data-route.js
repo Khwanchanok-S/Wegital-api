@@ -5,6 +5,6 @@ const router = express.Router();
 router.post('/', dataController.createData);
 router.get('/', dataController.getAllData);
 router.get('/:userId', dataController.getDataById);
-// router.delete('/:dataId', dataController.deleteData);
-// router.patch('/:dataId', dataController.updateData);
+router.delete('/:dataId', dataController.deleteData);
+router.patch('/:dataId', dataController.updateData);
 module.exports = router;

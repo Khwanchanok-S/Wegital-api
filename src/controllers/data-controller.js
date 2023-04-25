@@ -48,7 +48,7 @@ exports.getAllData = async (req, res, next) => {
 };
 
 exports.updateData = async (req, res, next) => {
-  console.log('--------------------_>');
+  console.log('--------------------_>', req.body);
 
   try {
     const data = await Data.update(
@@ -58,7 +58,7 @@ exports.updateData = async (req, res, next) => {
         wasit: req.body.wasit,
         date: req.body.date,
       },
-      { where: { id: req.params.userId, userId: req.user.id } },
+      { where: { id: req.params.dataId } },
     );
     res.status(201).json({ data });
   } catch (err) {
@@ -71,8 +71,6 @@ exports.deleteData = async (req, res, next) => {
     const data = await Data.destroy({
       where: {
         id: req.params.dataId,
-
-        userId: req.user.id,
       },
     });
     res.status(201).json({ data });
